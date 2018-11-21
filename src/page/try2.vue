@@ -28,7 +28,7 @@
         name: 'try2',
         data() {
             return {
-                dataList:[
+                dataList: [
                     {
                         title: '品牌',
                         list: ["苹果", "小米", "锤子", "魅族", "华为", "三星", "OPPO", "vivo", "乐视", "360", "中兴", "索尼"]
@@ -46,29 +46,31 @@
                         list: ["联通3G", "双卡单4G", "双卡双4G", "联通4G", "电信4G", "移动4G"]
                     }
                 ],
-                choose:{},
+                choose: {},
             };
             methods: {
-                data.forEach(item=>item.index = -1);
-                showFn:function(val,i,j){
+                data.forEach(item => item.index = -1);
+                showFn:function (val, i, j) {
                     //下面这种方法给对象添加属性并不会响应
                     // this.choose[i] = val
-                    this.$set(this.choose,i,val)
+                    this.$set(this.choose, i, val)
                     //找到操作的一行，把这一行的数据中的index设置为点击的标签的下标
                     this.dataList[i].index = j;
-                };
-                delFn(key){
+                }
+                ;
+                delFn(key)
+                {
                     /*
                     删除对象中的属性
                      */
-                    this.$delete(this.choose,key);
+                    this.$delete(this.choose, key);
                     this.dataList[key].index = -1;
                 }
 
             }
 
-            }
         }
+    }
 
 </script>
 

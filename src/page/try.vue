@@ -17,12 +17,13 @@
                         </el-form-item>
                     </el-form-item>
                 </el-form>
+
                 <div class="choose">
                     <div v-if="category.length">
-                        <div class='nav' v-for='(items,index) in category'>
+                        <div class='nav'  v-for='(items,index) in category'>
                             <div class='mutil-query-title' v-if='items.name' :key="items.id">{{items.name}}
                                 <span style='margin-left: 20px;' @click='allIn(index)'>全选</span>|<span
-                                        @click='remove(index)'>清空</span>
+                                    @click='remove(index)'>清空</span>
                             </div>
                             <ol v-if='items.items.length'>
                                 <li v-for='(item,key) in items.items'>
@@ -33,7 +34,7 @@
                     </div>
                     <div v-if='condition.length'>
                         <span>已选条件：</span>
-                        <span v-for='(item,index) in condition' class='active'>{{item.name}}> | </span>
+                        <span v-for='(item,index) in condition' class='active' @click='onRemove(index,key)'>{{item.name}}> | </span>
                     </div>
                 </div>
             </div>
@@ -48,95 +49,77 @@
         data() {
             return {
                 count: 0,
-                form: {
+                form:{
                     name: '',
                 },
                 category: [
                     {
-                        name: '品牌',
+                        name: '房价',
                         items: [
                             {
-                                name: '联想',
+                                name: '150以下',
                                 active: false
                             },
                             {
-                                name: '小米',
+                                name: '150-300',
                                 active: false
                             },
                             {
-                                name: '苹果',
+                                name: '301-450',
                                 active: false
                             },
                             {
-                                name: '东芝',
+                                name: '451-600',
+                                active: false
+                            },   {
+                                name: '600以上',
                                 active: false
                             }
                         ]
                     },
                     {
-                        name: 'CPU',
+                        name: '星级',
                         items: [
                             {
-                                name: 'intel i7 8700K',
+                                name: '一星/经济',
                                 active: false
                             },
                             {
-                                name: 'intel i7 7700K',
+                                name: '二星/普通',
                                 active: false
                             },
                             {
-                                name: 'intel i9 9270K',
+                                name: '三星/舒适',
                                 active: false
                             },
                             {
-                                name: 'intel i7 8700',
+                                name: '四星/高档',
                                 active: false
                             },
                             {
-                                name: 'AMD 1600X',
+                                name: '五星/豪华',
                                 active: false
 
                             }
                         ]
                     },
                     {
-                        name: '内存',
+                        name: '主题',
                         items: [
                             {
-                                name: '七彩虹8G',
+                                name: '商旅之家',
                                 active: false
                             },
                             {
-                                name: '七彩虹16G',
+                                name: '聚会做饭',
                                 active: false
                             },
                             {
-                                name: '金士顿8G',
+                                name: '农家乐',
                                 active: false
                             },
                             {
-                                name: '金士顿16G',
-                                active: false
-                            }
-                        ]
-                    },
-                    {
-                        name: '显卡',
-                        items: [
-                            {
-                                name: 'NVIDIA 1060 8G',
-                                active: false
-                            },
-                            {
-                                name: 'NVIDIA 1080Ti 16G',
-                                active: false
-                            },
-                            {
-                                name: 'NVIDIA 1080 8G',
-                                active: false
-                            },
-                            {
-                                name: 'NVIDIA 1060Ti 16G',
+                                name: '休闲情调',
                                 active: false
                             }
                         ]
@@ -166,30 +149,37 @@
                     }
                 });
             },
+            onRemove:function(index) {
+                            this.condition.splice(index, 1);
+                this.$delete(this.condition, this.count--);
+            },
+
             remove: function (index) {
+                let vm = this
                 var item = this.category[index].items;
                 item.filter(function (v1, key) {
                     v1.active = false;
-                    this.condition.filter(function (v2, i) {
+                    vm.condition.filter(function (v2, i) {
                         if (v1.name == v2.name) {
-                            this.condition.splice(i, 1);
-                            this.count--;
+                            vm.condition.splice(i, 1);
+                            vm.count--;
                         }
                     });
                 });
             }
             ,
             allIn: function (index) {
+                let vm = this
                 var item = this.category[index].items;
-                item.filter(function (v, key) {
+                item.filter(function (v) {
                     v.active = true;
-                    this.condition.filter(function (v2, i) {
+                    vm.condition.filter(function (v2, i) {
                         if (v.name == v2.name) {
-                            this.condition.splice(i, 1);
-                            this.count--;
+                            vm.condition.splice(i, 1);
+                            vm.count--;
                         }
                     });
-                    this.$set(this.condition, this.count++, v);
+                    vm.$set(vm.condition, vm.count++, v);
                 });
             }
         }
@@ -240,6 +230,9 @@
         position: relative;
         top: -40px;
         right: 65px;
+    }
+    .choose{
+        padding-left: 20px;
     }
 
 </style>
