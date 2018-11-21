@@ -19,10 +19,10 @@
                 </el-form>
                 <div class="choose">
                     <div v-if="category.length">
-                        <div class='nav'  v-for='(items,index) in category'>
+                        <div class='nav' v-for='(items,index) in category'>
                             <div class='mutil-query-title' v-if='items.name' :key="items.id">{{items.name}}
                                 <span style='margin-left: 20px;' @click='allIn(index)'>全选</span>|<span
-                                    @click='remove(index)'>清空</span>
+                                        @click='remove(index)'>清空</span>
                             </div>
                             <ol v-if='items.items.length'>
                                 <li v-for='(item,key) in items.items'>
@@ -48,7 +48,7 @@
         data() {
             return {
                 count: 0,
-                form:{
+                form: {
                     name: '',
                 },
                 category: [
@@ -147,27 +147,25 @@
         },
 
         methods: {
-
-            search(value){
-              console.log(form.name)
+            search(value) {
+                console.log(this.form.name)
             },
             handle: function (index, key) {
+                let vm = this
                 var item = this.category[index].items;
                 item.filter(function (v, i) {
                     if (i == key) {
                         v.active = true;
-                        this.condition.filter(function (v2, i) {
+                        vm.condition.filter(function (v2, i) {
                             if (v.name == v2.name) {
-                                this.condition.splice(i, 1);
-                                this.count--;
+                                vm.condition.splice(i, 1);
+                                vm.count--;
                             }
                         });
-                        this.set(this.condition, this.count++, v);
+                        vm.$set(vm.condition, vm.count++, v);
                     }
                 });
-
-            }
-            ,
+            },
             remove: function (index) {
                 var item = this.category[index].items;
                 item.filter(function (v1, key) {
@@ -191,7 +189,7 @@
                             this.count--;
                         }
                     });
-                    this.set(this.condition, this.count++, v);
+                    this.$set(this.condition, this.count++, v);
                 });
             }
         }
