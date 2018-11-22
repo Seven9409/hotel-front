@@ -19,11 +19,11 @@
                 </el-form>
 
                 <div class="choose">
-                    <div v-if="category.length">
-                        <div class='nav'  v-for='(items,index) in category'>
+                    <div v-if="category.length" class="choose-nav">
+                        <div class='nav' v-for='(items,index) in category'>
                             <div class='mutil-query-title' v-if='items.name' :key="items.id">{{items.name}}
                                 <span style='margin-left: 20px;' @click='allIn(index)'>全选</span>|<span
-                                    @click='remove(index)'>清空</span>
+                                        @click='remove(index)'>清空</span>
                             </div>
                             <ol v-if='items.items.length'>
                                 <li v-for='(item,key) in items.items'>
@@ -32,9 +32,10 @@
                             </ol>
                         </div>
                     </div>
-                    <div v-if='condition.length'>
+                    <div v-if='condition.length' class="aready">
                         <span>已选条件：</span>
-                        <span v-for='(item,index) in condition' class='active' @click='onRemove(index,key)'>{{item.name}}> | </span>
+                        <span v-for='(item,index) in condition' class='active'
+                              @click='onRemove(index)'>{{item.name}} | </span>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
         data() {
             return {
                 count: 0,
-                form:{
+                form: {
                     name: '',
                 },
                 category: [
@@ -71,7 +72,7 @@
                             {
                                 name: '451-600',
                                 active: false
-                            },   {
+                            }, {
                                 name: '600以上',
                                 active: false
                             }
@@ -131,6 +132,7 @@
 
         methods: {
             search(value) {
+                console.log(value)
                 console.log(this.form.name)
             },
             handle: function (index, key) {
@@ -149,15 +151,15 @@
                     }
                 });
             },
-            onRemove:function(index) {
-                            this.condition.splice(index, 1);
+            onRemove: function (index) {
+                this.condition.splice(index, 1);
                 this.$delete(this.condition, this.count--);
             },
 
             remove: function (index) {
                 let vm = this
                 var item = this.category[index].items;
-                item.filter(function (v1, key) {
+                item.filter(function (v1) {
                     v1.active = false;
                     vm.condition.filter(function (v2, i) {
                         if (v1.name == v2.name) {
@@ -166,8 +168,7 @@
                         }
                     });
                 });
-            }
-            ,
+            },
             allIn: function (index) {
                 let vm = this
                 var item = this.category[index].items;
@@ -215,10 +216,12 @@
         margin: 5% auto;
         font-size: 12px;
         background-color: white;
+        min-height: 300px;
     }
 
     .select .el-form {
         padding: 10px 5px 5px 63px;
+        margin-top: 20px;
     }
 
     .el-input {
@@ -231,10 +234,50 @@
         top: -40px;
         right: 65px;
     }
-    .choose{
+
+    .choose {
         padding-left: 20px;
+        margin-top: -30px;
+        margin-left: 43px;
+        font-size: 14px;
     }
 
+    .choose-nav {
+        border-top: #eee 1px dashed;
+    }
+
+    .nav {
+        /*display: inline-block;*/
+
+        float: left;
+        /*position: relative;*/
+        /*left: -307px;*/
+        /*top: 42px;*/
+        margin: 0 10px 15px 130px;
+    }
+
+    ol {
+        list-style: none;
+    }
+
+    ol > li {
+        /*float: left;*/
+        margin-top: 5px;
+        width: 60px;
+        height: 20px;
+        text-align: center;
+    }
+
+    li:hover {
+        background-color: #FFEBCD;
+    }
+    .aready {
+        float: left;
+        margin: 5px;
+    }
+    .aready span:hover {
+        background-color: #FFEBCD;
+    }
 </style>
 
 
