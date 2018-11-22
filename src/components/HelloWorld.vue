@@ -18,9 +18,6 @@
             </el-form-item>
             </el-form>
 
-
-
-
             <ul>
             <li class="select-list">
             <dl class="select1">
@@ -71,15 +68,14 @@
             </dl>
             </li>
             </ul>
-
-
-            <!--<el-tag-->
-            <!--v-for="tag in tags"-->
-            <!--:key="tag.name"-->
-            <!--closable="true"-->
-            <!--:type="tag.type">-->
-            <!--{{tag.name}}-->
-            <!--</el-tag>-->
+            </div>
+            <div class="paimai_list">
+                <div class="list_content"></div>
+                <el-pagination
+                        layout="prev, pager, next"
+                        :total="50">
+                </el-pagination>
+                
             </div>
 
         </el-main>

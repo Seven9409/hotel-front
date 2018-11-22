@@ -216,7 +216,7 @@
         margin: 5% auto;
         font-size: 12px;
         background-color: white;
-        min-height: 300px;
+        min-height: 320px;
     }
 
     .select .el-form {
@@ -243,17 +243,33 @@
     }
 
     .choose-nav {
-        border-top: #eee 1px dashed;
+        /*border-top: #eee 1px dashed;*/
     }
 
     .nav {
         /*display: inline-block;*/
-
+width: 100%;
         float: left;
+        border-bottom:#eee 1px dashed;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
         /*position: relative;*/
         /*left: -307px;*/
         /*top: 42px;*/
-        margin: 0 10px 15px 130px;
+        /*margin: 0 10px 15px 130px;*/
+    }
+    .mutil-query-title{
+        float: left;
+    }
+    .mutil-query-title span{
+        width: 35px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        display: inline-block;
+    }
+    .mutil-query-title span:hover{
+        background-color: #FFEBCD;
     }
 
     ol {
@@ -261,11 +277,13 @@
     }
 
     ol > li {
-        /*float: left;*/
-        margin-top: 5px;
-        width: 60px;
-        height: 20px;
+        float: left;
+        /*margin-top: 5px;*/
+        margin-left: 15px;
+        width: 70px;
+        height: 30px;
         text-align: center;
+        line-height: 30px;
     }
 
     li:hover {
@@ -273,7 +291,7 @@
     }
     .aready {
         float: left;
-        margin: 5px;
+        margin-top: 5px;
     }
     .aready span:hover {
         background-color: #FFEBCD;
