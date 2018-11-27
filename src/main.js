@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 const router = new VueRouter({
     routes
 });
-router.push("/Try");
+router.push("/Login");
 
 new Vue({
     router,

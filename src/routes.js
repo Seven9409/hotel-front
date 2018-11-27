@@ -11,10 +11,10 @@ import Try from  './page/try'
 
 const routes = [
     {
-        path: '/login',
+        path: '/Login',
         component: Login,
     }, {
-        path: '/register',
+        path: '/Register',
         component: Register,
     }, {
         path: '/404',

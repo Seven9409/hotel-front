@@ -2,12 +2,11 @@
     <el-container>
         <el-header>
             <el-row>
-                <el-button type="info">登录</el-button>
-                <el-button type="success">注册</el-button>
+                <el-button type="info" @click="$router.push('/login')">登录</el-button>
+                <el-button type="success" @click="$router.push('/register')">注册</el-button>
             </el-row>
         </el-header>
         <el-main>
-
             <div class="select">
                 <el-form ref="form" :model="form" label-width="60px" label-position="left">
                     <el-form-item label="酒店名">
@@ -39,6 +38,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="paimai_list">
+                <div class="list_content">
+                    <div class="hotel_content">
+                        <a href="#">
+                            <img :src="hotelLists.userImg">
+                        </a>
+                        
+
+                    </div>
+                    <div v-for="name in hotelLists">{{hotelLists.name}}</div>
+                    <div v-for="address in hotelLists">{{hotelLists.address}}</div>
+                    <div v-for="price in hotelLists">{{hotelLists.price}}</div>
+
+                </div>
+                <el-pagination
+                        layout="prev, pager, next"
+                        :total="50">
+                </el-pagination>
+
+            </div>
+
+
         </el-main>
     </el-container>
 </template>
@@ -127,7 +149,14 @@
                     }
                 ],
                 condition: [],
+                hotelLists: {
+                    name: "",
+                    address: "",
+                    price: "",
+                    userImg: '../assets/avator.jpg'
+                }
             };
+
         },
 
         methods: {
@@ -188,8 +217,9 @@
 </script>
 
 <style scoped>
+
     .el-header {
-        background-color: rgb(64, 158, 255);
+        background-color: #2cabc4;
         color: #333;
         text-align: center;
         line-height: 60px;
@@ -209,7 +239,7 @@
     }
 
     .select {
-        border: 1px solid #ddd;
+        border: 2px solid #2cabc4;
         padding: 5px 10px;
         border-radius: 4px;
         width: 1100px;
@@ -248,9 +278,9 @@
 
     .nav {
         /*display: inline-block;*/
-width: 100%;
+        width: 100%;
         float: left;
-        border-bottom:#eee 1px dashed;
+        border-bottom: #eee 1px dashed;
         margin-bottom: 15px;
         padding-bottom: 5px;
         /*position: relative;*/
@@ -258,17 +288,20 @@ width: 100%;
         /*top: 42px;*/
         /*margin: 0 10px 15px 130px;*/
     }
-    .mutil-query-title{
+
+    .mutil-query-title {
         float: left;
     }
-    .mutil-query-title span{
+
+    .mutil-query-title span {
         width: 35px;
         height: 25px;
         text-align: center;
         line-height: 25px;
         display: inline-block;
     }
-    .mutil-query-title span:hover{
+
+    .mutil-query-title span:hover {
         background-color: #FFEBCD;
     }
 
@@ -289,13 +322,29 @@ width: 100%;
     li:hover {
         background-color: #FFEBCD;
     }
+
     .aready {
         float: left;
         margin-top: 5px;
     }
+
     .aready span:hover {
         background-color: #FFEBCD;
     }
+
+    /*酒店列表*/
+    .list_content {
+        border: 1px solid;
+        width: 1000px;
+        height: 1000px;
+        margin: 5% auto;
+    }
+
+    .el-pagination {
+        text-align: center;
+        margin-top: 10px;
+    }
+
 </style>
 
 
