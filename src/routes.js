@@ -1,7 +1,7 @@
 import Login from './system/Login'
 import Register from './system/Register'
 import NotFound from './system/404'
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from './components/HotelIndex'
 import Info from './page/Info'
 import OrderDetails from './page/OrderDetails'
 import Setting from './page/Setting'
@@ -31,7 +31,7 @@ const routes = [
     },
 
     {
-        path: '/HelloWorld',
+        path: '/HotelIndex',
         component: HelloWorld,
     },
     {

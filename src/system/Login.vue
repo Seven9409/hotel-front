@@ -23,9 +23,9 @@
 
 <script>
 
-    // import * as api from "../api/api"
-    // import storage from "../common/Util"
-    // import * as RestCode from "../common/RestCode"
+    import * as api from "../api/api"
+    import storage from "../common/Util"
+    import * as RestCode from "../common/RestCode"
     export default {
         name: "Login",
         data() {

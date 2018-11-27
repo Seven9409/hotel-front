@@ -246,8 +246,8 @@
                 api.hotelList(params).then((res) => {
                     let code = res.code;
                     if (code === RestCode.SUCCESS) {
-                    // console.log(res.data.data.content)
-                    this.hotelList = res.data.data.content;
+                        // console.log(res.data.data.content)
+                        this.hotelList = res.data.data.content;
                     }
                     else if (code === RestCode.RECORD_NOT_FOUND) {
                         this.$message.warning('很抱歉，没有找到符合您条件的酒店！');
