@@ -4,7 +4,7 @@
              class="demo-ruleForm login-container">
         <h3 class="title"> 用户登录 </h3>
         <div class="avator">
-            <img src="../assets/avator.jpg" alt="用户头像" class="avator1">
+            <img :src="loginForm.picture" alt="用户头像" class="avator1">
         </div>
         <el-form-item label="账号" prop="account">
             <el-input type="text" v-model="loginForm.account" autocomplete="off" placeholder="账号"></el-input>
@@ -14,9 +14,9 @@
         </el-form-item>
         <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
         <el-form-item style="width: 100%">
-            <el-button type="primary" @click="submitForm('loginForm')" style="width: 100%">提交</el-button>
+            <el-button type="primary" @click="submitForm('loginForm')" style="width: 100%">登录</el-button>
         </el-form-item>
-        <a class="goRegister"   @click="$router.push('/Register')">还没有账号？马上注册</a>
+        <a class="goRegister"   @click="$router.push('/register')">还没有账号？马上注册</a>
         <!--<a class="Manager" href="/managerLoginPage">管理员登录</a>-->
     </el-form>
 </template>
@@ -34,6 +34,7 @@
                 loginForm: {
                     account: '',
                     password: '',
+                    picture:'',
                 },
                 loginRules: {
                     account: [
@@ -66,16 +67,11 @@
 
                                 storage.setStorage("user", user, 1000 * 60 * 60 * 2);
                                 storage.setStorage("token", token, 1000 * 60 * 60 * 2);
-                                vm.$router.push("/home");
+                                vm.$router.push("/hotelIndex");
                             } else {
                                 this.$message.error('登录失败。' + msg);
                             }
-
-
                         });
-
-                        // alert('submit!');
-                        // "$router.push('/home')"
                     } else {
                         console.log('error submit!!');
                         return false;

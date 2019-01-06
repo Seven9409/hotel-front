@@ -1,7 +1,7 @@
 import Login from './system/Login'
 import Register from './system/Register'
 import NotFound from './system/404'
-import HelloWorld from './components/HotelIndex'
+import HotelIndex from './components/HotelIndex'
 import Info from './page/Info'
 import OrderDetails from './page/OrderDetails'
 import Setting from './page/Setting'
@@ -11,31 +11,31 @@ import Try from  './page/try'
 
 const routes = [
     {
-        path: '/Login',
+        path: '/login',
         component: Login,
     }, {
-        path: '/Register',
+        path: '/register',
         component: Register,
     }, {
         path: '/404',
         component: NotFound,
     },
     {
-        path: '/Info',
+        path: '/info',
         component: Info,
         children: [
-            {path: 'OrderDetails', component: OrderDetails, name: '订单详情'},
-            {path: 'Setting', component: Setting, name: '账户设置'},
-            {path: 'Help', component: Help, name: '帮助'},
+            {path: 'orderDetails', component: OrderDetails, name: '订单详情'},
+            {path: 'setting', component: Setting, name: '账户设置'},
+            {path: 'help', component: Help, name: '帮助'},
         ]
     },
 
     {
-        path: '/HotelIndex',
-        component: HelloWorld,
+        path: '/hotelIndex',
+        component: HotelIndex,
     },
     {
-        path: '/Try',
+        path: '/try',
         component: Try,
     },
 ]

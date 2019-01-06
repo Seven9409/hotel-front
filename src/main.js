@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 const router = new VueRouter({
     routes
 });
-router.push("/HotelIndex");
+router.push("/hotelIndex");
 
 new Vue({
     router,

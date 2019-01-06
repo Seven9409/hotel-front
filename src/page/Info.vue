@@ -3,8 +3,8 @@
     <el-row class="container">
         <el-col :span="24" class="header">
             <el-row class="btn">
-                <el-button type="info">登录</el-button>
-                <el-button type="success">注册</el-button>
+                <el-button type="info" @click="$router.push('/info/setting')">{{ JSON.parse(getUser('user')).value.name}}</el-button>
+                <el-button type="success" @click.native="logout">注销</el-button>
             </el-row>
         </el-col>
 
@@ -13,23 +13,23 @@
             <aside class="sidebar">
                 <div class="profile-user">
                     <div class="userpic">
-                        <img src="../assets/avator.jpg" alt="用户图片">
+                        <img :src="'http://192.168.31.60:8013'+JSON.parse(getUser('user')).value.avatar" alt="用户图片">
                     </div>
                     <div class="usertitle">
-                        <div class="usertitle-name">root</div>
+                        <div class="usertitle-name">{{ JSON.parse(getUser('user')).value.name}}</div>
                         <div class="usertitle-job">用户</div>
                     </div>
                 </div>
                 <el-menu default-active="1-1" class="el-menu-vertical-demo">
-                    <el-menu-item index="1" @click="$router.push('/Info/OrderDetails')">
+                    <el-menu-item index="1" @click="$router.push('/info/orderDetails')">
                         <i class="el-icon-menu"></i>
                         <span slot="title">订单详情</span>
                     </el-menu-item>
-                    <el-menu-item index="2" @click="$router.push('/Info/Setting')">
+                    <el-menu-item index="2" @click="$router.push('/info/setting')">
                         <i class="el-icon-setting"></i>
                         <span slot="title">账户设置</span>
                     </el-menu-item>
-                    <el-menu-item index="3" @click="$router.push('/Info/Help')">
+                    <el-menu-item index="3" @click="$router.push('/info/help')">
                         <i class="el-icon-warning"></i>
                         <span slot="title">帮助</span>
                     </el-menu-item>
@@ -55,29 +55,46 @@
 </template>
 
 <script>
+    import storage from "../common/Util"
     export default {
-        name: 'Home',
+        name: 'Info',
         data() {
             return {
 
             };
         },
-
+        methods: {
+            getUser(user) {
+                return window.localStorage.getItem(user)
+            },
+            logout: function () {
+                var vm = this;
+                this.$confirm(
+                    "确认退出？", "提示", {}).then(() => {
+                    storage.removeStorage("user");
+                    storage.removeStorage("token");
+                    vm.$router.push('/login')
+                }).catch(() => {
+                });
+            },
+        }
     }
 </script>
 
 <style scoped>
-    .header{
+    .header {
         background-color: rgb(64, 158, 255);
         color: #333;
         text-align: center;
         line-height: 60px;
     }
+
     .btn {
         float: right;
         margin-right: 50px;
         padding-right: 50px;
     }
+
     .el-col {
         border-radius: 4px;
     }
@@ -87,11 +104,13 @@
         min-height: 50px;
         line-height: 50px;
     }
+
     .main {
         display: flex;
         color: #333;
         padding: 30px 0;
     }
+
     .main .sidebar {
         padding: 30px 10px 10px 10px;
         width: 280px;
@@ -143,7 +162,6 @@
         margin-top: 30px;
         padding-bottom: 20px;
     }
-
 
     .main .content-container {
         flex: 1;

@@ -8,12 +8,12 @@
 </template>
 
 <script>
-    import HelloWorld from './components/HotelIndex.vue'
+    import HotelIndex from './components/HotelIndex.vue'
 
     export default {
         name: 'app',
         components: {
-            HelloWorld
+            HotelIndex
         }
     }
 </script>

@@ -76,10 +76,6 @@
             let vm = this;
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    // var params = new URLSearchParams();
-                    // params.append('email', vm.registerForm.email);
-                    // params.append('username', vm.registerForm.account);
-                    // params.append('password', vm.registerForm.password);
                     api.requestRegister({
                         'email': vm.registerForm.email,
                         'name': vm.registerForm.account,
@@ -88,12 +84,7 @@
                         let code = res.code;
                         let msg = res.msg;
                         if (code === RestCode.SUCCESS) {
-                            // let data = res.data;
-                            // let token = data.token;
-                            // let user = data.user;
-                            // console.log(code, msg, data, token, user)
-                            // storage.setStorage("user", user, 1000 * 60 * 60 * 2);
-                            // storage.setStorage("token", token, 1000 * 60 * 60 * 2);
+
 
                             this.$message.success('注册成功');
                             vm.$router.push("/login");
@@ -106,9 +97,6 @@
 
 
                     });
-
-                    // alert('submit!');
-                    // "$router.push('/home')"
                 } else {
                     console.log('error submit!!');
                     return false;

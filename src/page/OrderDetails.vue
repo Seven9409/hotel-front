@@ -2,7 +2,7 @@
     <div class="portlet">
         <div class="portlet-title">
             <div class="caption">
-                预定记录
+                订单详情
             </div>
         </div>
         <!--表格-->
