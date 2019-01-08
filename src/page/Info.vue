@@ -1,12 +1,12 @@
 <template>
     <!--导航栏-->
     <el-row class="container">
-        <el-col :span="24" class="header">
-            <el-row class="btn">
-                <el-button type="info" @click="$router.push('/info/setting')">{{ JSON.parse(getUser('user')).value.name}}</el-button>
-                <el-button type="success" @click.native="logout">注销</el-button>
-            </el-row>
-        </el-col>
+        <!--<el-col :span="24" class="header">-->
+            <!--<el-row class="btn">-->
+                <!--<el-button type="info" @click="$router.push('/info/setting')">{{ JSON.parse(getUser('user')).value.name}}</el-button>-->
+                <!--<el-button type="success" @click.native="logout">注销</el-button>-->
+            <!--</el-row>-->
+        <!--</el-col>-->
 
         <!--侧边栏导航-->
         <el-col :span="24" class="main">
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-    import storage from "../common/Util"
     export default {
         name: 'Info',
         data() {
@@ -63,21 +62,21 @@
 
             };
         },
-        methods: {
-            getUser(user) {
-                return window.localStorage.getItem(user)
-            },
-            logout: function () {
-                var vm = this;
-                this.$confirm(
-                    "确认退出？", "提示", {}).then(() => {
-                    storage.removeStorage("user");
-                    storage.removeStorage("token");
-                    vm.$router.push('/login')
-                }).catch(() => {
-                });
-            },
-        }
+        // methods: {
+        //     getUser(user) {
+        //         return window.localStorage.getItem(user)
+        //     },
+        //     logout: function () {
+        //         var vm = this;
+        //         this.$confirm(
+        //             "确认退出？", "提示", {}).then(() => {
+        //             storage.removeStorage("user");
+        //             storage.removeStorage("token");
+        //             vm.$router.push('/login')
+        //         }).catch(() => {
+        //         });
+        //     },
+        // }
     }
 </script>
 

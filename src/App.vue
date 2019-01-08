@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <HotelIndex></HotelIndex>
         <transition name="fade"
                     mode="out-in">
             <router-view></router-view>

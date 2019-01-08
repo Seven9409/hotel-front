@@ -6,8 +6,8 @@ import Info from './page/Info'
 import OrderDetails from './page/OrderDetails'
 import Setting from './page/Setting'
 import Help from './page/Help'
-import Try from  './page/try'
-
+import  HomePage from './page/HomePage'
+import  BookingRoomPage from './page/BookingRoomPage'
 
 const routes = [
     {
@@ -21,6 +21,10 @@ const routes = [
         component: NotFound,
     },
     {
+        path: '/homePage',
+        component: HomePage,
+    },
+    {
         path: '/info',
         component: Info,
         children: [
@@ -29,14 +33,9 @@ const routes = [
             {path: 'help', component: Help, name: '帮助'},
         ]
     },
-
     {
-        path: '/hotelIndex',
-        component: HotelIndex,
-    },
-    {
-        path: '/try',
-        component: Try,
+        path: '/bookingRoomPage',
+        component: BookingRoomPage,
     },
 ]
 
