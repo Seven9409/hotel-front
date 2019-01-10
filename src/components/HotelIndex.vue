@@ -2,7 +2,7 @@
     <el-container>
         <el-header>
             <el-row>
-                <h1>Welcome</h1>
+                <h1  @click="$router.push('/hotelIndex/homePage')">Welcome</h1>
                 <div class="btn">
                 <template v-if="fetch('token') == null">
                     {{fetch('token')}}
@@ -81,6 +81,9 @@ import storage from "../common/Util"
         float: left;
         margin-left: 70px;
         letter-spacing: 18px;
+    }
+    h1:hover{
+        cursor:pointer
     }
     .btn {
         float: right;
