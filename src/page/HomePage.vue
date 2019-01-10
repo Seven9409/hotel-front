@@ -38,12 +38,14 @@
             <div class="list_content" v-if="hotelList.length">
                 <div class="hotel_content" v-for="(hotel) in hotelList">
                     <div class="picBox">
-                        <a href="#">
-                            <img :src="'http://192.168.31.60:8013'+hotel.picture">
-                        </a></div>
-                    <h2>{{hotel.name}}</h2>
+                        <!--<router-link to="/bookingRoomPage">-->
+                        <a @click="$router.push('/hotelIndex/bookingRoomPage')">
+                            <img :src="'http://192.168.31.60:8013'+hotel.picture"></a>
+                        <!--</router-link>-->
+                    </div>
+                    <h2 @click="$router.push('/hotelIndex/bookingRoomPage')"> {{hotel.name}}</h2>
                     <el-rate
-                            v-model="hotel.starRated"
+                            v-bind:value="hotel.starRated|stringToNumber"
                             disabled
                             text-color="#ff9900">
                     </el-rate>
@@ -76,7 +78,6 @@
 <script>
     import * as api from "../api/api"
     import * as RestCode from "../common/RestCode"
-    import storage from "../common/Util"
 
     export default {
         name: "HomePage",
@@ -186,14 +187,19 @@
             };
 
         },
-
+        filters: {
+            stringToNumber: function (value) {
+               return parseInt(value)
+            }
+        },
         methods: {
-
+            // stringToNumber: function (value) {
+            //     return parseInt(value)
+            // },
 
             // 条件筛选
             handle: function (index, key) {
                 // console.log(index,key)
-                let vm = this
                 var item = this.category[index].items;
                 // console.log(index)
                 switch (index) {
@@ -327,6 +333,7 @@
 
 <style scoped>
 
+
     .select {
         border: 2px solid #2cabc4;
         padding: 5px 10px;
@@ -448,7 +455,7 @@
         /*border: 1px solid;*/
     }
 
-    .list_content .hotel_content .picBox a img {
+    .list_content .hotel_content .picBox  img {
         width: 100%;
         height: 100%;
     }
@@ -459,7 +466,13 @@
         padding: 15px 0 10px 20px;
         margin-top: 50px;
     }
-
+    h2:hover{
+        cursor:pointer
+    }
+    .list_content .hotel_content h2>a {
+        text-decoration: none;
+        color: #2cabc4;
+    }
     .el-rate {
         width: 200px;
         float: left;

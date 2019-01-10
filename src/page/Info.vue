@@ -21,15 +21,15 @@
                     </div>
                 </div>
                 <el-menu default-active="1-1" class="el-menu-vertical-demo">
-                    <el-menu-item index="1" @click="$router.push('/info/orderDetails')">
+                    <el-menu-item index="1" @click="$router.push('/hotelIndex/info/orderDetails')">
                         <i class="el-icon-menu"></i>
                         <span slot="title">订单详情</span>
                     </el-menu-item>
-                    <el-menu-item index="2" @click="$router.push('/info/setting')">
+                    <el-menu-item index="2" @click="$router.push('/hotelIndex/info/setting')">
                         <i class="el-icon-setting"></i>
                         <span slot="title">账户设置</span>
                     </el-menu-item>
-                    <el-menu-item index="3" @click="$router.push('/info/help')">
+                    <el-menu-item index="3" @click="$router.push('/hotelIndex/info/help')">
                         <i class="el-icon-warning"></i>
                         <span slot="title">帮助</span>
                     </el-menu-item>
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+    import storage from '../common/Util'
     export default {
         name: 'Info',
         data() {
@@ -62,21 +63,21 @@
 
             };
         },
-        // methods: {
-        //     getUser(user) {
-        //         return window.localStorage.getItem(user)
-        //     },
-        //     logout: function () {
-        //         var vm = this;
-        //         this.$confirm(
-        //             "确认退出？", "提示", {}).then(() => {
-        //             storage.removeStorage("user");
-        //             storage.removeStorage("token");
-        //             vm.$router.push('/login')
-        //         }).catch(() => {
-        //         });
-        //     },
-        // }
+        methods: {
+            getUser(user) {
+                return window.localStorage.getItem(user)
+            },
+            logout: function () {
+                var vm = this;
+                this.$confirm(
+                    "确认退出？", "提示", {}).then(() => {
+                    storage.removeStorage("user");
+                    storage.removeStorage("token");
+                    vm.$router.push('/login')
+                }).catch(() => {
+                });
+            },
+        }
     }
 </script>
 

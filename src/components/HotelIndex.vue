@@ -10,7 +10,7 @@
                     <el-button type="success" @click="$router.push('/register')">注册</el-button>
                 </template>
                 <template v-else>
-                    <el-button type="info" @click="$router.push('/info/setting')">{{
+                    <el-button type="info" @click="$router.push('/hotelIndex/info/setting')">{{
                         JSON.parse(getUser('user')).value.name}}
                     </el-button>
                     <el-button type="success" @click="logout">注销</el-button>
@@ -19,6 +19,16 @@
             </el-row>
         </el-header>
         <!--<el-main>-->
+        <section class="content-container">
+            <el-row>
+                <el-col :span="24" class="content-wrapper">
+                    <transition name="fade" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
+                </el-col>
+            </el-row>
+        </section>
+
             <!--<transition name="fade" mode="out-in">-->
                 <!--<router-view></router-view>-->
             <!--</transition>-->
@@ -28,14 +38,9 @@
     </el-container>
 </template>
 <script>
-    import HomePage from '../page/HomePage'
-
-
+import storage from "../common/Util"
     export default {
         name: 'HotelIndex',
-        components: {
-            HomePage
-        },
         methods: {
             fetch(key) {
                 return window.localStorage.getItem(key)

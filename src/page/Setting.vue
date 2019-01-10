@@ -41,14 +41,13 @@
         name: 'Setting',
         data() {
             return {
-                form:[{
+                form:{
                     name: '',
                     tel:'',
                     Email:'',
                     gender:'',
                     description:'',
-                }
-                ],
+                },
             }
         },
         methods: {

@@ -122,8 +122,8 @@
                 filters: {
                     search: '',
                     CheckinNumber: '',
-                    totalPages: 5,
-                }
+                },
+                totalPages: 5,
             }
         },
         methods: {

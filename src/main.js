@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 const router = new VueRouter({
     routes
 });
-router.push("/homepage");
+router.push("/hotelIndex/homePage");
 
 new Vue({
     router,

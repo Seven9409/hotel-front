@@ -25,7 +25,7 @@
         name: 'Help',
         data() {
             return {
-                form:[],
+                form:{},
             };
         },
         methods: {

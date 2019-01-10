@@ -7,6 +7,7 @@ import Setting from './page/Setting'
 import Help from './page/Help'
 import  HomePage from './page/HomePage'
 import  BookingRoomPage from './page/BookingRoomPage'
+import HotelIndex from './components/HotelIndex'
 
 const routes = [
     {
@@ -19,22 +20,22 @@ const routes = [
         path: '/404',
         component: NotFound,
     },
+
     {
-        path: '/homePage',
-        component: HomePage,
-    },
-    {
-        path: '/info',
-        component: Info,
+        path: '/hotelIndex',
+        component: HotelIndex,
         children: [
-            {path: 'orderDetails', component: OrderDetails, name: '订单详情'},
-            {path: 'setting', component: Setting, name: '账户设置'},
-            {path: 'help', component: Help, name: '帮助'},
+            {path: 'homePage', component: HomePage, name: 'index'},
+            {path: 'info',
+                component: Info,
+                children: [
+                    {path: 'orderDetails', component: OrderDetails, name: 'aa'},
+                    {path: 'setting', component: Setting, name: 'sd'},
+                    {path: 'help', component: Help, name: 'ff'},
+                ]
+            },
+            {path: 'bookingRoomPage', component: BookingRoomPage, name: 'xcc'},
         ]
-    },
-    {
-        path: '/bookingRoomPage',
-        component: BookingRoomPage,
     },
 ]
 

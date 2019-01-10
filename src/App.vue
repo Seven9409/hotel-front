@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <HotelIndex></HotelIndex>
         <transition name="fade"
                     mode="out-in">
             <router-view></router-view>
@@ -9,12 +8,12 @@
 </template>
 
 <script>
-    import HotelIndex from './components/HotelIndex.vue'
+    // import HotelIndex from './components/HotelIndex.vue'
 
     export default {
         name: 'app',
         components: {
-            HotelIndex
+            // HotelIndex
         }
     }
 </script>
