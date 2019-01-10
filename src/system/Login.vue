@@ -67,7 +67,7 @@
 
                                 storage.setStorage("user", user, 1000 * 60 * 60 * 2);
                                 storage.setStorage("token", token, 1000 * 60 * 60 * 2);
-                                vm.$router.push("/hotelIndex");
+                                vm.$router.push("/homePage");
                             } else {
                                 this.$message.error('登录失败。' + msg);
                             }

@@ -1,7 +1,6 @@
 import Login from './system/Login'
 import Register from './system/Register'
 import NotFound from './system/404'
-import HotelIndex from './components/HotelIndex'
 import Info from './page/Info'
 import OrderDetails from './page/OrderDetails'
 import Setting from './page/Setting'
